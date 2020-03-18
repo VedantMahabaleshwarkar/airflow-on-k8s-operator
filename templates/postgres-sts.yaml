@@ -56,14 +56,14 @@ spec:
       containers:
       - name: postgres
         env:
-        - name: POSTGRES_DB
-          value: testdb
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD
+        - name: POSTGRESQL_DATABASE
+          value: postgresql
+        - name: POSTGRESQL_USER
+          value: postgresql
+        - name: POSTGRESQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: rootpassword
+              key: password
               name: {{.SecretName}}
         image: {{.Base.Spec.Postgres.Image}}:{{.Base.Spec.Postgres.Version}}
         imagePullPolicy: IfNotPresent
@@ -72,7 +72,7 @@ spec:
             command:
             - bash
             - -c
-            - psql -w -U $POSTGRES_USER -d $POSTGRES_DB -c SELECT 1
+            - psql -w -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c 'SELECT 1'
           failureThreshold: 3
           initialDelaySeconds: 30
           periodSeconds: 20
@@ -86,7 +86,7 @@ spec:
             command:
             - bash
             - -c
-            - psql -w -U $POSTGRES_USER -d $POSTGRES_DB -c SELECT 1
+            - psql -w -U $POSTGRESQL_USER -d $POSTGRESQL_DATABASE -c SELECT 1
           failureThreshold: 3
           initialDelaySeconds: 10
           periodSeconds: 5

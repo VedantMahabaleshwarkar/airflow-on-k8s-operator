@@ -512,7 +512,7 @@ func (s *UI) sts(o *reconciler.Object, v interface{}) {
 	sts, r := updateSts(o, v)
 	sts.Spec.Template.Spec.Containers[0].Resources = r.Cluster.Spec.UI.Resources
 	if IsPostgres(&r.Base.Spec) {
-		addPostgresUserDBContainer(r.Cluster, sts)
+		//addPostgresUserDBContainer(r.Cluster, sts)
 	} else {
 		addMySQLUserDBContainer(r.Cluster, sts)
 	}

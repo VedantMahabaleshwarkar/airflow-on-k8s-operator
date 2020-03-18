@@ -27,16 +27,16 @@ spec:
   redis:
     operator: False
   scheduler:
-    version: "1.10.2"
+    version: "latest"
   ui:
     replicas: 1
-    version: "1.10.2"
+    version: "latest"
   worker:
     replicas: 2
-    version: "1.10.2"
+    version: "latest"
   flower:
     replicas: 1
-    version: "1.10.2"
+    version: "latest"
   dags:
     subdir: "airflow/example_dags/"
     git:

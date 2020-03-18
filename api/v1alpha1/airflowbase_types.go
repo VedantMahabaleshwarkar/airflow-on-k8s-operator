@@ -28,8 +28,8 @@ import (
 const (
 	DefaultMySQLImage      = "mysql"
 	DefaultMySQLVersion    = "5.7"
-	DefaultPostgresImage   = "postgres"
-	DefaultPostgresVersion = "9.5"
+	DefaultPostgresImage   = "registry.access.redhat.com/rhscl/postgresql-10-rhel7"
+	DefaultPostgresVersion = "latest"
 	defaultUIImage         = "gcr.io/airflow-operator/airflow"
 	defaultUIVersion       = "1.10.2"
 	defaultFlowerVersion   = "1.10.2"
