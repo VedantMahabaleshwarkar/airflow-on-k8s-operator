@@ -55,6 +55,18 @@ spec:
         {{end}}
       containers:
       - name: flower
+        env:
+        - name: POSTGRESQL_HOST
+          value: postgresql
+        - name: POSTGRESQL_DATABASE
+          value: postgresql
+        - name: POSTGRESQL_USER
+          value: postgresql
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: rootpassword
+              name: {{.SecretName}}
         args:
         - flower
         image: {{.Cluster.Spec.Flower.Image}}:{{.Cluster.Spec.Flower.Version}}

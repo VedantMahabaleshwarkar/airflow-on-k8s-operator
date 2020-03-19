@@ -56,6 +56,18 @@ spec:
         {{end}}
       containers:
       - name: worker
+        env:
+        - name: POSTGRESQL_HOST
+          value: postgresql
+        - name: POSTGRESQL_DATABASE
+          value: postgresql
+        - name: POSTGRESQL_USER
+          value: postgresql
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: rootpassword
+              name: {{.SecretName}}
         args:
         - worker
         image: {{.Cluster.Spec.Worker.Image}}:{{.Cluster.Spec.Worker.Version}}

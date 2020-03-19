@@ -55,6 +55,18 @@ spec:
         {{end}}
       containers:
       - name: scheduler
+        env:
+        - name: POSTGRESQL_HOST
+          value: postgresql
+        - name: POSTGRESQL_DATABASE
+          value: postgresql
+        - name: POSTGRESQL_USER
+          value: postgresql
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: rootpassword
+              name: {{.SecretName}}
         args:
         - scheduler
         image: {{.Cluster.Spec.Scheduler.Image}}:{{.Cluster.Spec.Scheduler.Version}}

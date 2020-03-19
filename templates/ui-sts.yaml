@@ -57,6 +57,18 @@ spec:
       - name: airflow-ui
         args:
         - webserver
+        env:
+        - name: POSTGRESQL_HOST
+          value: postgresql
+        - name: POSTGRESQL_DATABASE
+          value: postgresql
+        - name: POSTGRESQL_USER
+          value: postgresql
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: rootpassword
+              name: {{.SecretName}}
         image: {{.Cluster.Spec.UI.Image}}:{{.Cluster.Spec.UI.Version}}
         imagePullPolicy: IfNotPresent
         livenessProbe:
