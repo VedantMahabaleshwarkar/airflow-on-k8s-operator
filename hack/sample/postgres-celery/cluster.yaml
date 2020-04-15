@@ -24,22 +24,22 @@ spec:
   redis:
     operator: False
   scheduler:
-    image: "docker.io/vedantm/docker-airflow"
-    version: "latest"
+    image: "quay.io/opendatahub/docker-airflow"
+    version: "openshift"
   ui:
-    image: "docker.io/vedantm/docker-airflow"
+    image: "quay.io/opendatahub/docker-airflow"
     replicas: 1
-    version: "latest"
+    version: "openshift"
     enableroutes: true
   worker:
-    image: "docker.io/vedantm/docker-airflow"
+    image: "quay.io/opendatahub/docker-airflow"
     replicas: 2
-    version: "latest"
+    version: "openshift"
     ForceRoot: "true"
   flower:
-    image: "docker.io/vedantm/docker-airflow"
+    image: "quay.io/opendatahub/docker-airflow"
     replicas: 1
-    version: "latest"
+    version: "openshift"
     enableroutes: true
   dags:
     subdir: "airflow/dags/"
