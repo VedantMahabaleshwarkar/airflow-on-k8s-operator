@@ -293,7 +293,8 @@ type AirflowUISpec struct {
 	// Resources is the resource requests and limits for the pods.
 	// +optional
 	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
-
+	// enableroutes: true enables routes for the AirflowUI and CeleryUI
+	// +optional, enable on OpenShift clusters only
 	EnableRoutes bool `json:"enableroutes,omitempty"`
 }
 
