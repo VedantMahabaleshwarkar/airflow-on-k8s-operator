@@ -29,7 +29,7 @@ const (
 	DefaultMySQLImage      = "mysql"
 	DefaultMySQLVersion    = "5.7"
 	DefaultPostgresImage   = "postgres"
-	DefaultPostgresVersion = "9.5"
+	DefaultPostgresVersion = "10"
 	defaultUIImage         = "gcr.io/airflow-operator/airflow"
 	defaultUIVersion       = "1.10.2"
 	defaultFlowerVersion   = "1.10.2"
@@ -293,6 +293,9 @@ type AirflowUISpec struct {
 	// Resources is the resource requests and limits for the pods.
 	// +optional
 	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
+	// enableroutes: true enables routes for the AirflowUI and CeleryUI
+	// +optional, enable on OpenShift clusters only
+	EnableRoutes bool `json:"enableroutes,omitempty"`
 }
 
 func (s *AirflowUISpec) validate(fp *field.Path) field.ErrorList {
